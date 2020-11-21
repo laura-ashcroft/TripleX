@@ -1,14 +1,14 @@
 #include <iostream>
 #include <ctime>
 
-void PrintIntroduction(int Difficulty) 
+void PrintIntroduction() 
 {
     //Print welcome messages to the terminal
     std::cout << "\n##########################################################################\n";
     std::cout << "\nYou are a bomb defusal expert that has come across a bridge of coded bombs\non the way to your next location.\n";
     std::cout << "You have to carefully pick your way across the bridge supports, decoding\neach bomb as you go so that your company can cross the bridge safely.\n";
     std::cout << "\n##########################################################################\n";
-    std::cout << "\nEnter the correct code to defuse this level " << Difficulty << " bomb...\n\n";
+   
     std::cout <<  "       _______\n";
     std::cout <<  "      /  /  / ''..\n";
     std::cout <<  "     |~||~||~|     '.\n";
@@ -23,12 +23,12 @@ void PrintIntroduction(int Difficulty)
 
 bool PlayGame(int Difficulty)
 {
-    PrintIntroduction(Difficulty);
+    PrintIntroduction();
 
     //declare variables and assigned numbers
     const int CodeA = rand() % Difficulty + Difficulty;
     const int CodeB = rand() % Difficulty + Difficulty;
-    const int CodeC = rand() % Difficulty + Difficulty;
+    const int CodeC = rand() % Difficulty + Difficulty ;
 
     const int CodeSum = CodeA + CodeB + CodeC;
     const int CodeProduct = CodeA * CodeB * CodeC;
@@ -38,7 +38,8 @@ bool PlayGame(int Difficulty)
     std::cout << " >> There are 3 numbers in the code\n";
     std::cout << " >> The codes add up to: " << CodeSum;
     std::cout << "\n >> The codes multiply to give: " << CodeProduct << std::endl;
-    std::cout << "Please enter your numbers in this format: x x x";
+    std::cout << "\nEnter the correct code to defuse this level " << Difficulty << " bomb...\n\n";
+    std::cout << "Please enter your numbers in this format: x x x\n";
     std::cout << "\n##########################################################################\n";
   
     //store player guess
@@ -84,7 +85,7 @@ bool PlayGame(int Difficulty)
         // std::cout << "       `-=#$%&%$#=-'   \n";
         // std::cout << "          | ;  :|     \n";
         // std::cout << "_____.,-#%&$@%#&#~,._____\n";
-        std::cout << "\nCareful - That was the wrong code! Another one of those and the whole\n bridge could go up!"\n;
+        std::cout << "\nCareful - That was the wrong code! Another one of those and the whole\n bridge could go up!\n";
         std::cout << "\n##########################################################################\n";
         return false;
     }
