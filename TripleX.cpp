@@ -21,10 +21,8 @@ void PrintIntroduction()
     std::cout << "\n##########################################################################\n";
 }
 
-bool PlayGame(int Difficulty)
+bool PlayGame(int Difficulty, int Attempts)
 {
-    PrintIntroduction();
-
     //declare variables and assigned numbers
     const int CodeA = rand() % Difficulty + Difficulty;
     const int CodeB = rand() % Difficulty + Difficulty;
@@ -35,12 +33,13 @@ bool PlayGame(int Difficulty)
 
     //print sum and product to the terminal
     std::cout << std::endl;
+    std::cout << " >> You have " << Attempts << " attempts remaining\n";
     std::cout << " >> There are 3 numbers in the code\n";
     std::cout << " >> The codes add up to: " << CodeSum;
     std::cout << "\n >> The codes multiply to give: " << CodeProduct << std::endl;
     std::cout << "\nEnter the correct code to defuse this level " << Difficulty << " bomb...\n\n";
     std::cout << "Please enter your numbers in this format: x x x\n";
-    std::cout << "\n##########################################################################\n";
+    std::cout << "\n##########################################################################\n\n";
   
     //store player guess
     int GuessA, GuessB, GuessC;
@@ -52,8 +51,8 @@ bool PlayGame(int Difficulty)
     //check if players guess is correct
     if (GuessSum == CodeSum &&  GuessProduct == CodeProduct) 
     {
-        std::cout << "##########################################################################\n";
-        std::cout << "The bomb is defused! Well done. Time to move onto the next one...\n";
+        std::cout << "\n##########################################################################\n\n";
+        std::cout << "\nThe bomb is defused! Well done. Time to move onto the next one...\n\n";
         std::cout << "          ▄▄        \n";
         std::cout << "         █  █        \n";
         std::cout << "         █  █        \n";
@@ -67,25 +66,13 @@ bool PlayGame(int Difficulty)
         std::cout << "▓▓▓▓▓▓█              █ \n";
         std::cout << "▓▓▓▓▓█████         █  \n";
         std::cout << "██████▀    ▀▀██████▀    \n";
-        std::cout << "##########################################################################\n";
+        std::cout << "\n##########################################################################\n";
         return true;
     }
     else 
     {
-        std::cout << "##########################################################################\n";
-        // std::cout << "BOOM! The bomb blew up in your hands! Game Over.\n";
-        // std::cout << "     _.-^^---....,,--       \n";
-        // std::cout << " _--                  --_  \n";
-        // std::cout << "<                        >)\n";
-        // std::cout << "|                         | \n";
-        // std::cout << " \\._                   _./  \n";
-        // std::cout << "    ```--. . , ; .--'''       \n";
-        // std::cout << "          | |   |             \n";
-        // std::cout << "       .-=||  | |=-.   \n";
-        // std::cout << "       `-=#$%&%$#=-'   \n";
-        // std::cout << "          | ;  :|     \n";
-        // std::cout << "_____.,-#%&$@%#&#~,._____\n";
-        std::cout << "\nCareful - That was the wrong code! Another one of those and the whole\n bridge could go up!\n";
+        std::cout << "\n##########################################################################\n";
+        std::cout << "\nCareful - That was the wrong code!\n";
         std::cout << "\n##########################################################################\n";
         return false;
     }
@@ -97,16 +84,39 @@ int main()
     srand(time(NULL)); //creates new random sequence based on time of day
     int LevelDifficulty = 1;
     const int MaxDifficulty = 5;
+    int AttemptsLeft = 3;
+    PrintIntroduction();
 
     while (LevelDifficulty <= MaxDifficulty) // Loop game until all levels are completed
     {
-        bool bLevelComplete = PlayGame(LevelDifficulty);
+        bool bLevelComplete = PlayGame(LevelDifficulty, AttemptsLeft);
         std::cin.clear(); //Clears any errors
         std::cin.ignore(); //Discards the buffer
+
+        if (AttemptsLeft <= 1) 
+        {
+        std::cout << "BOOM! The bomb blew up in your hands! Game Over.\n";
+        std::cout << "     _.-^^---....,,--       \n";
+        std::cout << " _--                  --_  \n";
+        std::cout << "<                        >)\n";
+        std::cout << "|                         | \n";
+        std::cout << " \\._                   _./  \n";
+        std::cout << "    ```--. . , ; .--'''       \n";
+        std::cout << "          | |   |             \n";
+        std::cout << "       .-=||  | |=-.   \n";
+        std::cout << "       `-=#$%&%$#=-'   \n";
+        std::cout << "          | ;  :|     \n";
+        std::cout << "_____.,-#%&$@%#&#~,._____\n";
+        return 0;
+        }
 
         if (bLevelComplete)
         {
             ++LevelDifficulty;
+        }
+        else
+        {
+            --AttemptsLeft;
         }
         
     }
