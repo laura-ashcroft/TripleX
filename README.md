@@ -10,12 +10,14 @@
 <td><img src="./Images/game_failure.png" alt="level failed screenshot"></td>
 </table>
 
-###
+### This game demonstrates:
 
-A short, fun game using logic and maths to complete the levels!
-
-You are a bomb defusal expert that has come across a bridge of coded bombs on the way to your next location.
-You have to carefully pick your way across the bridge supports, decoding each bomb as you go so that your company can cross the bridge safely.
+- Assigning variables as strings to easily reuse certain words/phrases - reducing repetition across the code
+- Breaking code down into small, specific functions to clean up the file
+- Using std::cout and std::cin to create a dynamic game where the player can input their choices and receive messages
+- Using a nested if statement within a for loop to create specific conditions
+- Creating a series of if/else if statements to determine if the game has been won or lost
+- Increasing the difficulty of the level as the player progresses
 
 ## How to use
 
