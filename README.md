@@ -5,7 +5,7 @@
 ### Laura Ashcroft
 
 <table>
-<td><img src="./Images/game_intro.png" width="200px" height="auto" alt="game introduction"></td>
+<td><img src="./Images/game_intro.png" alt="game introduction"></td>
 <td><img src="./Images/game_success.png" width="200px" height="auto" alt="level passed screenshot"></td>
 <td><img src="./Images/game_failure.png" width="200px" height="auto" alt="level failed screenshot"></td>
 </table>
